@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import "./app.css";
+import React, { useCallback, useState } from "react";
+import Editor from "./Editor";
+import "./App.css";
 
 const App: React.FC = () => {
-  const [count, setCount] = useState(0);
+  const [doc, setDoc] = useState("# Hello, World!\n");
+
+  const handleDocChange = useCallback((newDoc: string) => setDoc(newDoc), []);
 
   return (
     <div className="app">
-      <header className="app-header">
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount(count => count + 1)}>
-            count: {count}
-          </button>
-        </p>
-      </header>
+      <Editor initialDoc={doc} onChange={handleDocChange} />
     </div>
   );
 };
