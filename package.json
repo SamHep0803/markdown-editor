@@ -47,6 +47,14 @@
     "vite": "2.5.1"
   },
   "dependencies": {
+    "@codemirror/commands": "^0.19.2",
+    "@codemirror/gutter": "^0.19.1",
+    "@codemirror/highlight": "^0.19.2",
+    "@codemirror/history": "^0.19.0",
+    "@codemirror/lang-javascript": "^0.19.1",
+    "@codemirror/language": "^0.19.2",
+    "@codemirror/matchbrackets": "^0.19.1",
+    "@codemirror/state": "^0.19.1",
     "electron-updater": "4.4.6",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.3.2",
