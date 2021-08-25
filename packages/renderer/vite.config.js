@@ -1,8 +1,8 @@
 /* eslint-env node */
 
-import {chrome} from '../../electron-vendors.config.json';
-import {join} from 'path';
-import {builtinModules} from 'module';
+import { chrome } from "../../electron-vendors.config.json";
+import { join } from "path";
+import { builtinModules } from "module";
 
 const PACKAGE_ROOT = __dirname;
 
@@ -15,11 +15,11 @@ const config = {
   root: PACKAGE_ROOT,
   resolve: {
     alias: {
-      '/@/': join(PACKAGE_ROOT, 'src') + '/',
+      "/@/": join(PACKAGE_ROOT, "src") + "/",
     },
   },
   plugins: [],
-  base: '',
+  base: "",
   server: {
     fs: {
       strict: true,
@@ -28,8 +28,8 @@ const config = {
   build: {
     sourcemap: true,
     target: `chrome${chrome}`,
-    outDir: 'dist',
-    assetsDir: '.',
+    outDir: "dist",
+    assetsDir: ".",
     terserOptions: {
       ecma: 2020,
       compress: {
@@ -39,7 +39,7 @@ const config = {
     },
     rollupOptions: {
       external: [
-        ...builtinModules,
+        ...builtinModules.filter((m) => m !== "process" && m !== "assert"),
       ],
     },
     emptyOutDir: true,

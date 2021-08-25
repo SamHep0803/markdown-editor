@@ -1,3 +1,4 @@
+import "./shim.js";
 import React from "react";
 import * as ReactDOM from "react-dom";
 import "./index.css";
