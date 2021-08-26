@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, nativeTheme } from "electron";
 import { join } from "path";
 import { URL } from "url";
 
@@ -23,7 +23,7 @@ if (import.meta.env.MODE === "development") {
         },
       })
     )
-    .catch(e => console.error("Failed install extension:", e));
+    .catch((e) => console.error("Failed install extension:", e));
 }
 
 let mainWindow: BrowserWindow | null = null;
@@ -68,6 +68,8 @@ const createWindow = async () => {
           "file://" + __dirname
         ).toString();
 
+  nativeTheme.themeSource = "dark";
+
   await mainWindow.loadURL(pageUrl);
 };
 
@@ -88,7 +90,7 @@ app.on("window-all-closed", () => {
 app
   .whenReady()
   .then(createWindow)
-  .catch(e => console.error("Failed create window:", e));
+  .catch((e) => console.error("Failed create window:", e));
 
 // Auto-updates
 if (import.meta.env.PROD) {
@@ -96,5 +98,5 @@ if (import.meta.env.PROD) {
     .whenReady()
     .then(() => import("electron-updater"))
     .then(({ autoUpdater }) => autoUpdater.checkForUpdatesAndNotify())
-    .catch(e => console.error("Failed check updates:", e));
+    .catch((e) => console.error("Failed check updates:", e));
 }
